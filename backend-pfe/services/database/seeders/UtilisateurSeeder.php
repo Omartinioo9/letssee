@@ -13,15 +13,21 @@ class UtilisateurSeeder extends Seeder
      */
     public function run()
     {
-        // Create a known user with a hashed password for testing
         Utilisateur::create([
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => Hash::make('password123'), 
-            'experience'=>'3la moulanaaa bismilaaaahh'
+            'experience' => '3la moulanaaa bismilaaaahh'
         ]);
 
-        // Create additional users if needed
+        Utilisateur::create([
+            'name' => 'Si Saidi',
+            'email' => 'saidi@example.com',
+            'password' => Hash::make('password123'), 
+            'experience' => 'wld lbladd',
+            'role'=>'developer'
+        ]);
+
         Utilisateur::factory()->count(9)->create();
     }
 }

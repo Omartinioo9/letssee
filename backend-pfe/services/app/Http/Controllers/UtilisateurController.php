@@ -17,6 +17,21 @@ class UtilisateurController extends Controller
         $clients = Utilisateur::where('role', 'developer')->get();
         return response()->json($clients);
     }
+    public function FindUtilisateur($id)
+    {
+        // Rechercher l'utilisateur par son ID
+        $devloper = Utilisateur::find($id);
+    
+        // Vérifier si l'utilisateur a été trouvé
+        if ($devloper) {
+            // Retourner l'utilisateur trouvé en format JSON
+            return response()->json($devloper);
+        } else {
+            // Retourner une réponse indiquant que l'utilisateur n'a pas été trouvé
+            return response()->json(['message' => 'Utilisateur non trouvé'], 404);
+        }
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -104,6 +119,10 @@ class UtilisateurController extends Controller
     return response()->json($user, 200);
 }
 
-    
+// public function me()
+// {
+//     $user = Auth::user();
+//     return response()->json($user);
+// }
     
 }    
